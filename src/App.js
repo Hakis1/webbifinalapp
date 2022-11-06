@@ -1,9 +1,9 @@
-import Button from "./components/Button";
+import Jokes from "./components/Jokes";
 
 function App() {
   return (
     <div>
-      <Button />
+      <Jokes />
     </div>
   );
 }

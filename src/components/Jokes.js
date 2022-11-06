@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const URL = 'https://v2.jokeapi.dev/joke/Any';
 
-export default function Button() {
+export default function Jokes() {
     const [setup, setSetup] = useState('');
     const [delivery, setDelivery] = useState('')
     const [isLoading, setIsLoading] = useState(false)

@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
+.Headline {
+  text-align: center;
+}
+
+
+.DateTime {
+  font-size: 55px;
+  margin: 60px;
+  
+}
 * {
     box-sizing: border-box;
 }
@@ -11,7 +21,7 @@ body {
 }
 
 
-.app {
+.Jokes {
   background-color: white;
   padding: 2rem;
   border-radius: 10px;
@@ -21,15 +31,15 @@ body {
   text-align: center;
 }
 
-.app {
+.Jokes {
   margin-top: 0;
 }
 
-.app p {
+.Jokes p {
   margin: 2rem;
 }
 
-.app button {
+.Jokes button {
   background-color: deepskyblue;
   border: 0;
   border-radius: 3px;
@@ -40,11 +50,11 @@ body {
   transition: transform 0.1s linear;
 }
 
-.app button:active {
+.Jokes button:active {
   transform: scale(0.95);
 }
 
-.app button:focus {
+.Jokes button:focus {
   outline: none;
 }
 

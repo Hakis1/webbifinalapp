@@ -4,41 +4,50 @@ import axios from 'axios';
 const URL = 'https://v2.jokeapi.dev/joke/Any';
 
 export default function Jokes() {
-    const [setup, setSetup] = useState('');
-    const [delivery, setDelivery] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
-
-    const generateJoke = () => {
-        setIsLoading(true)
-        axios.get(URL)
-            .then((response) => {
-                console.log(response)
-                const joke = response.data
-                setSetup(joke.setup)
-                setDelivery(joke.delivery)
-                setIsLoading(false)
-            }).catch(error => {
-                console.log(error)
-                alert("Retrieving the joke failed!!")
-            })
-    }
+    const [data, setData] = useState(null)
+    const [isLoadingJoke, setIsLoadingJoke] = useState(false)
 
     useEffect(() => {
-        generateJoke();
+        setIsLoadingJoke(true)
+        axios.get(URL)
+            .then((response) => {
+                setData(response.data)
+            }).catch(error => {
+                console.log(error)
+                alert("Retrieving the joke failed!")
+            }).finally(() => {
+                setIsLoadingJoke(false)
+            })
     }, [])
 
-    if (isLoading) {
+    const generateJoke = () => {
+        setIsLoadingJoke(true)
+        axios.get(URL)
+            .then((response) => {
+                setData(response.data)
+            }).catch(error => {
+                console.log(error)
+                alert("Retrieving the joke failed!")
+            }).finally(() => {
+                setIsLoadingJoke(false)
+            })
+
+    }
+
+    if (isLoadingJoke) {
         return <p>Loading your joke...</p>
     }
 
     return (
         <>
-            <div className="app">
-                <h1>Random Joke Generator</h1>
-                <h4>{setup}</h4>
-                <p>{delivery}</p>
+            <div className="Jokes">
+                <h2>Random Joke Generator</h2>
+                <h4>Category : {data?.category}</h4>
+                <h4>{data?.setup}</h4>
+                <p>{data?.delivery}</p>
                 <button className="button" onClick={generateJoke} >Another one?</button>
             </div>
         </>
+
     );
 }

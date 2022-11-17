@@ -18,7 +18,6 @@ export const DateAndTime = () => {
     <div className="DateTime">
       <p>Time: {date.toLocaleTimeString()} </p>
       <p>Date: {date.toLocaleDateString()}</p>
-
     </div>
   )
 }
